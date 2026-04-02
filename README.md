@@ -1,31 +1,25 @@
-# To-Do List with Real-Time Updates
-### Features 
-- Displaying and adding tasks
+# To-Do List with Real-Time Updates (Vue 2)
 
-## Project setup
-```
+## Overview
+This is a Vue 2 frontend application for a real-time To-Do List system. It communicates with a Node.js + Express backend and MongoDB database.
+
+## Features
+- Add tasks
+- Display task list
+- Real-time updates via polling
+- Vuex state management
+- Reusable components
+- Unit tested with Jest
+
+## Tech Stack
+- Vue 2 (Options API)
+- Vuex (state management)
+- TypeScript
+- Axios
+- Jest + Vue Test Utils
+
+## Setup
+
+```bash
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+yarn run serve
