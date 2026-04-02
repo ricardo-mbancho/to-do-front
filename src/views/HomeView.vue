@@ -23,25 +23,25 @@
 
     computed: {
       tasks() {
-        return this.$store.getters.tasks
+        return this.$store.getters['todo/tasks']
       },
       errorMessage() {
-        return this.$store.getters.errorMessage;
+        return this.$store.getters['todo/errorMessage'];
       }
     },
 
     methods: {
       handleAdd(title: string) {
-        this.$store.dispatch('addTask', title)
+        this.$store.dispatch('todo/addTask', title)
       }
     },
 
     created() {
-      this.$store.dispatch('loadTasks');
+      this.$store.dispatch('todo/loadTasks');
 
       // Poll tasks every 5 seconds
       this.interval = setInterval(() => {
-        this.$store.dispatch('loadTasks');
+        this.$store.dispatch('todo/loadTasks');
       }, 5000)
     },
 
