@@ -18,7 +18,7 @@
 <script lang="ts">
   import Vue, { PropType } from 'vue';
 
-  interface Task {
+  export interface Task {
     _id: string
     title: string
   }

@@ -1,12 +1,11 @@
 import { Module } from 'vuex';
 import { createTask, fetchTasks } from '@/services/taskService';
-import { RootState } from '..';
+import { RootState } from '../index';
 
 export interface Task {
   _id: string;
   title: string;
 }
-
 
 export interface TodoState {
   tasks: Task[];
