@@ -1,10 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import TodoList, { Task } from '@/components/TodoList.vue';
-
-const tasksMock: Task[] = [
-  { _id: '1', title: 'Task 1' },
-  { _id: '2', title: 'Task 2' }
-];
+import TodoList from '@/components/TodoList.vue';
+import { tasksMock } from './mock';
 
 describe('TodoList.vue', () => {
   it('should render tasks when tasks array is not empty', () => {

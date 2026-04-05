@@ -1,18 +1,20 @@
 <template>
   <div>
-    <h1 v-if="!tasks.length && !errorMessage">
-      No tasks found
+    <h1 v-if="loading">
+      Loading...
     </h1>
-    <h1 v-if="!tasks.length && errorMessage" class="error">
+    <h1 v-else-if="errorMessage" class="error">
       {{ errorMessage }}
     </h1>
-    <ul>
+    <h1 v-else-if="tasks.length === 0 && !loading">
+      No tasks found
+    </h1>
+    <ul v-else>
       <li v-for="task in tasks" :key="task._id">
         {{ task.title }}
       </li>
     </ul>
-</div>
-
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,10 +24,12 @@
     _id: string
     title: string
   }
-
   export default Vue.extend({
-    name: 'TaskList',
     props: {
+      loading: {
+        type: Boolean as PropType<boolean>,
+        required: true
+      },
       tasks: {
         type: Array as () => Task[], 
         required: true

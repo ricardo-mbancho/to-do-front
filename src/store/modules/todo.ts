@@ -10,6 +10,7 @@ export interface Task {
 export interface TodoState {
   tasks: Task[];
   error: string;
+  loading: boolean;
 }
 
 interface customeError {
@@ -27,18 +28,21 @@ export const todoModule: Module<TodoState, RootState> = {
 
   state: {
     tasks: [],
-    error: ''
+    error: '',
+    loading: true,
   },
 
   mutations: {
     SET_TASKS(state, tasks: Task[]) {
       state.tasks = tasks;
+      state.loading = false;
     },
     ADD_TASK(state, task: Task) {
       state.tasks.unshift(task);
     },
     SET_ERROR(state, message: string) {
       state.error = message;
+      state.loading = false;
     }
   },
 
@@ -66,6 +70,7 @@ export const todoModule: Module<TodoState, RootState> = {
 
   getters: {
     tasks: (state: TodoState) => state.tasks,
-    errorMessage: (state: TodoState) => state.error
+    errorMessage: (state: TodoState) => state.error,
+    loading: (state: TodoState) => state.loading
   }
 };

@@ -2,7 +2,11 @@
   <div>
     <TodoHeader title="To-Do List with Real-Time Updates" />
     <TodoInput @add="handleAdd" />
-    <TodoList :tasks="tasks" :errorMessage="errorMessage" />
+    <TodoList 
+      :tasks="tasks" 
+      :errorMessage="errorMessage" 
+      :loading="loading"
+    />
   </div>
 </template>
 
@@ -27,9 +31,11 @@
       },
       errorMessage() {
         return this.$store.getters['todo/errorMessage'];
+      },
+      loading() {
+        return this.$store.getters['todo/loading'];
       }
     },
-
     methods: {
       handleAdd(title: string) {
         this.$store.dispatch('todo/addTask', title)
@@ -38,11 +44,6 @@
 
     created() {
       this.$store.dispatch('todo/loadTasks');
-
-      // Poll tasks every 5 seconds
-      this.interval = setInterval(() => {
-        this.$store.dispatch('todo/loadTasks');
-      }, 5000)
     },
 
     beforeDestroy() {
